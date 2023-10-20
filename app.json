@@ -1,10 +1,17 @@
 {
   "expo": {
-    "name": "client",
-    "slug": "client",
+    "name": "curtis-shepard-portfolio",
+    "slug": "curtis",
     "version": "1.0.0",
+    "scheme": "curtis-shepard-portfolio",
+    "web": {
+      "bundler": "metro"
+    },
     "assetBundlePatterns": [
       "**/*"
+    ],
+    "plugins": [
+      "expo-router"
     ]
   }
 }
