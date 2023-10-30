@@ -1,7 +1,14 @@
-import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, ScrollView, StyleSheet, Text, View, Image, } from "react-native";
 import Skill from "../components/skill";
 import Heading from "../components/heading";
 import { useLocalSearchParams, Link, useNavigation } from 'expo-router';
+import Ecommerce1 from '../assets/images/Ecommerce1.jpeg';
+import Ecommerce2 from '../assets/images/Ecommerce2.jpeg';
+import Ecommerce3 from '../assets/images/Ecommerce3.jpeg';
+import Android1 from '../assets/images/Android1.jpg';
+import Android2 from '../assets/images/Android2.jpg';
+import Android3 from '../assets/images/Android3.jpg';
+import Platform from "../components/Platform";
 
 export const skills = [
   {
@@ -83,61 +90,10 @@ export const skills = [
   },
 ];
 
-const iconList = [
-  {
-    id: '1',
-    dependent: 'Fontisto',
-    description: 'MongoDB',
-    icon: 'mongodb',
-    color: '#4db33d',
-  },
-  {
-    id: '2',
-    dependent: 'Fontisto',
-    description: 'React',
-    icon: 'react',
-    color: '#61dbfb',
-  },
-  {
-    id: '3',
-    dependent: 'Fontisto',
-    description: 'WordPress',
-    icon: 'wordpress',
-    color: '#096484',
-  },
-  {
-    id: '4',
-    dependent: 'Fontisto',
-    description: 'HTML',
-    icon: 'html5',
-    color: 'black',
-  },
-  {
-    id: '5',
-    dependent: 'Fontisto',
-    description: 'CSS',
-    icon: 'css3',
-    color: 'black',
-  },
-  {
-    id: '6',
-    dependent: 'Ionicons',
-    description: 'JavaScript',
-    icon: 'logo-javascript',
-    color: 'black',
-  },
-  {
-    id: '7',
-    dependent: 'Ionicons',
-    description: 'iOS',
-    icon: 'logo-javascript',
-    color: 'black',
-  }
-]
 const mission = {
   id: '1',
   heading: 'The Mission',
-  paragraph: `Creative website designs bring joy to website and app users across the globe. My goal is to share my creativity with users who need the projects I help to inspire and design. I want to help project owners meet their marketing and advertising needs through web and mobile app development. I also enjoy giving back to my community through organizing charity events using my project management skills.`,
+  paragraph: `Creative website designs bring joy to website and app users across the globe. My goal is to share my creativity with users who need the projects I help to inspire and design. I help project owners meet their marketing and advertising needs through web and mobile app development. I also enjoy giving back to my community through organizing charity events using my project management skills.`,
   image: '',
   summary: ``,
 };
@@ -145,10 +101,18 @@ const mission = {
 const about = [
 
   {
-    id: '1',
+    id: 1,
     heading: 'E-Commerce Website Design',
-    paragraph: `Creative website designs bring joy to website and app users across the globe. My goal is to share my creativity with users who need the projects I help to inspire and design. I want to help project owners meet their marketing and advertising needs through web and mobile app development.`,
-    image: '',
+    paragraph: `Creative website designs bring joy to website and app users across the globe. My goal is to share my creativity with users who need the projects I help to inspire and design. I help project owners meet their marketing and advertising needs through web and mobile app development.`,
+    images: [Ecommerce1, Ecommerce2, Ecommerce3],
+    summary: ``,
+  },
+
+  {
+    id: 2,
+    heading: 'Mobile App Designs',
+    paragraph: `Creative website designs bring joy to website and app users across the globe. My goal is to share my creativity with users who need the projects I help to inspire and design. I help project owners meet their marketing and advertising needs through web and mobile app development.`,
+    images: [Android1, Android2, Android3],
     summary: ``,
   }
 ];
@@ -156,61 +120,61 @@ export default function Page() {
 
   return (
     <SafeAreaView>
-      <ScrollView>
-        <View>
-          <Text style={{ fontSize: 32, fontWeight: 'bold', textAlign: 'center', }}>Curtis Shepard</Text>
-          <Text style={{ fontSize: 24, fontWeight: 'bold', textAlign: 'center', color: 'orange', }}>Web Developer</Text>
-          <View
-            style={{
-              margin: 5,
-            }}>
-            <Text style={{ fontSize: 18.72, fontWeight: 'bold', }}>{mission.heading}</Text>
-            <Text style={{ fontSize: 16 }}>{mission.paragraph}</Text>
-          </View>
+      <View>
+        <ScrollView >
+            <Text style={{ fontSize: 32, fontWeight: 'bold', textAlign: 'center', }}>Curtis Shepard</Text>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', textAlign: 'center', color: 'orange', }}>Web Developer</Text>
+            <View
+              style={{
+                margin: 5,
+              }}>
+              <Text style={{ fontSize: 18.72, fontWeight: 'bold', }}>{mission.heading}</Text>
+              <Text style={{ fontSize: 16 }}>{mission.paragraph}</Text>
+            </View>
 
-          <Text style={{ fontSize:24, fontWeight: 'bold',  color:'orange',}}>Website & App Development Skills</Text>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            
+            <Text style={{ fontSize: 24, fontWeight: 'bold', color: 'orange', textAlign: 'center', }}>Web Development Experience</Text>
+
             {
-              skills.map((i, id) => (
-                <View style={{ flexDirection: 'row' }} key={id}>
-
-                  <Skill
-                    id={i.id}
-                    image={i.image}
-                    color={i.color}
-                    icon={i.icon}
-                    title={i.title}
-                    description={i.description}
-                    shortDescription={i.shortDescription}
-                    link={i.link}
-                    dependent={i.dependent} />
+              about.map((about, index) => (
+                <View key={index}
+                  style={{
+                    margin: 5,
+                  }}>
+                  <Platform
+                  id={about.id}
+                    heading={about.heading}
+                    paragraph={about.paragraph}
+                    images={about.images}
+                  />
                 </View>
               ))
             }
-          </ScrollView>
+               <Text style={{ fontSize: 24, fontWeight: 'bold', color: 'orange', textAlign: 'center', }}>Website & App Development Skills</Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
 
-          <Text style={{ fontSize:24, fontWeight: 'bold', color:'orange', }}>Web Development Experience</Text>
-            
-          {
-            about.map((about, index) => (
-              <View key={index}
-                style={{
-                  margin: 5,
-                }}>
-                <Text style={{ fontSize: 18.72, fontWeight: 'bold',}}>{about.heading}</Text>
+              {
+                skills.map((i, id) => (
+                  <View style={{ flexDirection: 'row' }} key={id}>
 
-                <Text style={{ fontSize: 16 }}>{about.paragraph}</Text>
-                <Image />
-                <Text>{about.summary}</Text>
-              </View>
-            ))
-          }
+                    <Skill
+                      id={i.id}
+                      image={i.image}
+                      color={i.color}
+                      icon={i.icon}
+                      title={i.title}
+                      description={i.description}
+                      shortDescription={i.shortDescription}
+                      link={i.link}
+                      dependent={i.dependent} />
+                  </View>
+                ))
+              }
+            </ScrollView>
 
-
-        </View >
-      </ScrollView>
+        </ScrollView>
+      </View >
     </SafeAreaView >
+
   );
 }
 

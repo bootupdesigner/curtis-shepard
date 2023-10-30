@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, StyleSheet, Text, View, Platform } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, Platform, Image, ScrollView } from 'react-native';
 import { useGlobalSearchParams } from 'expo-router';
 import { skills } from './index';
 import Fontisto from '@expo/vector-icons/Fontisto';
 import Heading from '../components/heading';
-
+import ecommerce2 from '../assets/images/Ecommerce1.jpeg'
 
 const Experience = () => {
   const glob = useGlobalSearchParams();
@@ -22,17 +22,17 @@ const Experience = () => {
   return (
     <SafeAreaView>
 
-      <View style={{ flex: 1 }}>
-        <Heading back={Platform.OS === 'android' ? false : true} />
+      <View >
+        <ScrollView>
+        <Heading back={Platform.OS === 'ios' ? true : false} />
 
-        <View style={{ paddingHorizontal: 10, justifyContent: 'space-evenly', alignItems: 'center', height: 400 }}>
-
+        <View style={{ paddingHorizontal: 10, justifyContent: 'space-evenly', alignItems: 'center', flex:1 }}>
+          <Image source={ecommerce2} style={{height:200,width:200,}}/>
           <Text style={{ fontWeight: 'bold', fontSize: 32, }}>{selectedSkill.shortDescription}</Text>
           {selectedSkill.dependent === 'Fontisto' ?
             <Fontisto name={selectedSkill.icon} size={48} color={selectedSkill.color} />
             : <Ionicons name={selectedSkill.icon} size={48} color={selectedSkill.color} />
           }
-          <Fontisto name={selectedSkill.icon} size={48} color={selectedSkill.color} />
 
           <View>
             <Text style={{ fontWeight: 'bold', fontSize: 24, textAlign: 'center', }}>Experience</Text>
@@ -43,6 +43,7 @@ const Experience = () => {
           </View>
 
         </View>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
